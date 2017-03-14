@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/theme/css/style.css">
 
 
-<meta name="description" content="Hello World!">
+<meta name="description" content="Tic-Tac-Toe Game. import java.util.Scanner; public class Tic_Tac_Toe_Test { public static void main(String[] args) { TicTacToe game = new TicTacToe(); Scanner s = new Scanner(System.in); do { System.out.println("Player " + game.currentPlayerMark + " enter your move : "); int row = s.nextInt(); int col = s.nextInt(); game.placeMark(row, col); game.printBoard(); if …">
 </head>
 
 <body>
@@ -50,7 +50,7 @@
       </li>
       <li class="list-inline-item">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/category/random.html">random</a>
+        <a href="/category/projects.html">Projects</a>
       </li>
       <li class="list-inline-item">
         <i class="fa fa-user-o"></i>
@@ -58,7 +58,116 @@
     </ul>
   </header>
   <div class="content">
-    <p>Hello World!</p>
+    <p>Tic-Tac-Toe Game.</p>
+<p>import java.util.Scanner;</p>
+<p>public class Tic_Tac_Toe_Test {
+    public static void main(String[] args) {
+        TicTacToe game = new TicTacToe();
+        Scanner s = new Scanner(System.in);
+        do {
+            System.out.println("Player " + game.currentPlayerMark
+                    + " enter your move : ");
+            int row = s.nextInt();
+            int col = s.nextInt();
+            game.placeMark(row, col);
+            game.printBoard();
+            if (game.checkForWin()) {
+                System.out.println("We have a winner! Congrats!");
+                System.exit(0);
+            } else if (game.isBoardFull()) {
+                System.out.println("Appears we have a draw!");
+                System.exit(0);
+            }
+            game.changePlayer();
+        } while (true);
+    }
+}</p>
+<p>public class TicTacToe {
+    public char[][] board;
+    public char currentPlayerMark;
+    public TicTacToe() {
+        board = new char[3][3];
+        currentPlayerMark='x';
+        initializeBoard();
+    }
+    public void initializeBoard() {
+        for (int i = 0; i &lt; 3; i++) {// loop for rows</p>
+<div class="highlight"><pre><span></span>        for (int j = 0; j &lt; 3; j++) {// loop for column
+            board[i][j] = &#39;-&#39;;
+        }
+    }
+}
+public void printBoard() {
+    System.out.println(&quot;-------------&quot;);
+    for (int i = 0; i &lt; 3; i++) {
+        System.out.print(&quot;| &quot;);
+        for (int j = 0; j &lt; 3; j++) {
+            System.out.print(board[i][j] + &quot; | &quot;);
+        }
+        System.out.println();
+        System.out.println(&quot;-------------&quot;);
+    }
+}
+public boolean isBoardFull() {
+    boolean isFull = true;
+    for (int i = 0; i &lt; 3; i++) {
+        for (int j = 0; j &lt; 3; j++) {
+            if (board[i][j] == &#39;-&#39;) {
+                isFull = false;
+            }
+        }
+    }
+    return isFull;
+}
+public boolean checkForWin() {
+    return (checkRowsForWin() || checkColumnsForWin() || checkDiagonalsForWin());
+}
+
+private boolean checkRowsForWin() {
+    for (int i = 0; i &lt; 3; i++) {
+        if (checkRowCol(board[i][0], board[i][1], board[i][2]) == true) {
+            return true;
+        }
+    }
+    return false;
+}
+private boolean checkColumnsForWin() {
+    for (int i = 0; i &lt; 3; i++) {
+        if (checkRowCol(board[0][i], board[1][i], board[2][i]) == true) {
+            return true;
+        }
+    }
+    return false;
+}
+private boolean checkDiagonalsForWin() {
+    return ((checkRowCol(board[0][0], board[1][1], board[2][2]) == true) || (checkRowCol(board[0][2], board[1][1], board[2][0]) == true));
+}
+
+private boolean checkRowCol(char c1, char c2, char c3) {
+    return ((c1 != &#39;-&#39;) &amp;&amp; (c1 == c2) &amp;&amp; (c2 == c3));
+}
+public void changePlayer() {
+    if (currentPlayerMark == &#39;x&#39;) {
+        currentPlayerMark = &#39;o&#39;;
+    } else {
+        currentPlayerMark = &#39;x&#39;;
+    }
+}
+public boolean placeMark(int row, int col) {
+    if ((row &gt;= 0) &amp;&amp; (row &lt; 3)) {
+        if ((col &gt;= 0) &amp;&amp; (col &lt; 3)) {
+            if (board[row][col] == &#39;-&#39;) {
+                 board[row][col] = currentPlayerMark;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+</pre></div>
+
+
+<p>}</p>
   </div>
 </article>
     </div>
