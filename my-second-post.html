@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/theme/css/style.css">
 
 
-<meta name="description" content="Tic-Tac-Toe Game. import java.util.Scanner; public class Tic_Tac_Toe_Test { public static void main(String[] args) { TicTacToe game = new TicTacToe(); Scanner s = new Scanner(System.in); do { System.out.println("Player " + game.currentPlayerMark + " enter your move : "); int row = s.nextInt(); int col = s.nextInt(); game.placeMark(row, col); game.printBoard(); if …">
+<meta name="description" content="Tic-Tac-Toe Game. Tic-Tac-Toe game(Noughts and Crosses or Xs and Os) it is marking the spaces in a 3×3 grid. The player succeeds if they place three of their marks in a horizontal, vertical, or diagonal row . I did the project in java. import java.util.Scanner; public class …">
 </head>
 
 <body>
@@ -59,8 +59,11 @@
   </header>
   <div class="content">
     <p>Tic-Tac-Toe Game.</p>
-<p>import java.util.Scanner;</p>
-<p>public class Tic_Tac_Toe_Test {
+<p>Tic-Tac-Toe game(Noughts and Crosses or Xs and Os) it is marking the spaces in a 3×3 grid. 
+The player succeeds if they place three of their marks in a horizontal, vertical, or diagonal row . 
+I did the project in java.</p>
+<p>import java.util.Scanner;
+public class Tic_Tac_Toe_Test {
     public static void main(String[] args) {
         TicTacToe game = new TicTacToe();
         Scanner s = new Scanner(System.in);
@@ -91,39 +94,38 @@
         initializeBoard();
     }
     public void initializeBoard() {
-        for (int i = 0; i &lt; 3; i++) {// loop for rows</p>
-<div class="highlight"><pre><span></span>        for (int j = 0; j &lt; 3; j++) {// loop for column
-            board[i][j] = &#39;-&#39;;
-        }
-    }
-}
-public void printBoard() {
-    System.out.println(&quot;-------------&quot;);
-    for (int i = 0; i &lt; 3; i++) {
-        System.out.print(&quot;| &quot;);
-        for (int j = 0; j &lt; 3; j++) {
-            System.out.print(board[i][j] + &quot; | &quot;);
-        }
-        System.out.println();
-        System.out.println(&quot;-------------&quot;);
-    }
-}
-public boolean isBoardFull() {
-    boolean isFull = true;
-    for (int i = 0; i &lt; 3; i++) {
-        for (int j = 0; j &lt; 3; j++) {
-            if (board[i][j] == &#39;-&#39;) {
-                isFull = false;
+        for (int i = 0; i &lt; 3; i++) {// loop for rows
+            for (int j = 0; j &lt; 3; j++) {// loop for column
+                board[i][j] = '-';
             }
         }
     }
-    return isFull;
-}
-public boolean checkForWin() {
-    return (checkRowsForWin() || checkColumnsForWin() || checkDiagonalsForWin());
-}
-
-private boolean checkRowsForWin() {
+    public void printBoard() {
+        System.out.println("-------------");
+        for (int i = 0; i &lt; 3; i++) {
+            System.out.print("| ");
+            for (int j = 0; j &lt; 3; j++) {
+                System.out.print(board[i][j] + " | ");
+            }
+            System.out.println();
+            System.out.println("-------------");
+        }
+    }
+    public boolean isBoardFull() {
+        boolean isFull = true;
+        for (int i = 0; i &lt; 3; i++) {
+            for (int j = 0; j &lt; 3; j++) {
+                if (board[i][j] == '-') {
+                    isFull = false;
+                }
+            }
+        }
+        return isFull;
+    }
+    public boolean checkForWin() {
+        return (checkRowsForWin() || checkColumnsForWin() || checkDiagonalsForWin());
+    }</p>
+<div class="highlight"><pre><span></span>private boolean checkRowsForWin() {
     for (int i = 0; i &lt; 3; i++) {
         if (checkRowCol(board[i][0], board[i][1], board[i][2]) == true) {
             return true;
